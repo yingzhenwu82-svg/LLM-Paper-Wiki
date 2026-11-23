@@ -1,0 +1,14 @@
+flowchart TD
+ A[取得論文] --> B[Ingest 讀取與抽取]
+ B --> C{來源核對與品質檢查}
+ C -->|有錯或不確定| B
+ C -->|通過| D[更新 Paper note]
+ D --> E[更新概念頁及 Wiki links]
+ E --> F[更新 index / log]
+ F --> G[Query Wiki 編寫簡報大綱]
+ G --> H[生成 HTML]
+ H --> I{簡報檢查}
+ I -->|不通過| G
+ I -->|通過| J[輸出]
+ L[定期 Lint] --> M[斷鏈/孤兒/矛盾/過時]
+ M --> E
